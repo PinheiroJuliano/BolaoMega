@@ -1,10 +1,12 @@
-body {
+html, body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: #f0f0f0;
+    margin: 0; 
+    padding: 0; 
 }
 
 .container {
@@ -16,6 +18,10 @@ body {
     max-width: 400px;
     width: 100%;
     box-sizing: border-box;
+    max-height: 90vh; 
+    overflow-y: auto; 
+    align-items: center;
+    justify-content: center;
 }
 
 .logo_megasena {
@@ -23,11 +29,11 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 1.1em;
     color: #333;
 }
 
-button {
+#generateButton {
     background-color: #049c4c;
     color: white;
     border: none;
@@ -39,27 +45,43 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+#generateButton:hover {
     background-color: #128648;
+}
+
+#cleanButton {
+    background-color: #888b8a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 0.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#cleanButton:hover {
+    background-color: #3a3a3a;
 }
 
 #result {
     margin-top: 20px;
     font-size: 18px;
     color: #333;
-    min-height: 30px; /* Garante que haja espaço mesmo antes de gerar números */
+    min-height: 30px; 
     display: flex;
-    flex-direction: column; /* Permite que os jogos sejam exibidos verticalmente */
+    flex-direction: column; 
     align-items: center;
 }
 
 #result div {
-    margin: 5px 0; /* Espaçamento vertical entre os jogos */
+    margin: 5px 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
-    width: 100%; /* Faz os jogos ocuparem a largura completa do container */
+    width: 100%; 
     box-sizing: border-box;
     text-align: left;
 }
