@@ -5,92 +5,56 @@ html, body {
     align-items: center;
     height: 100%;
     background-color: #f0f0f0;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
-    padding: 2em;
+    background: white;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 420px;
     width: 100%;
-    box-sizing: border-box;
-    max-height: 90vh; 
-    overflow-y: auto; 
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    text-align: center;
 }
 
-.logo_megasena {
-    width: 21em;
+input {
+    width: 80%;
+    padding: 8px;
+    margin: 5px 0;
 }
 
-h1 {
-    font-size: 1.1em;
-    color: #333;
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
 }
 
 #generateButton {
-    background-color: #049c4c;
+    background: #049c4c;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 0.5em;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-#generateButton:hover {
-    background-color: #128648;
 }
 
 #cleanButton {
-    background-color: #888b8a;
+    background: #888;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 0.5em;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
 }
 
-#cleanButton:hover {
-    background-color: #3a3a3a;
+.logo_megasena {
+    width: 200px;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
-    min-height: 30px; 
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-}
-
-#result div {
-    margin: 5px 0;
+#result div, #savedGames div {
+    margin-top: 10px;
     padding: 10px;
-    border: 1px solid #ddd;
+    background: #f9f9f9;
     border-radius: 5px;
-    background-color: #f9f9f9;
-    width: 100%; 
-    box-sizing: border-box;
     text-align: left;
 }
 
-#result span {
-    font-weight: bold;
-    color: #094d0f;
-}
-
-#numJogos {
-    width: 50px;
+#savedGames button {
+    margin-top: 5px;
+    background: #ccc;
 }

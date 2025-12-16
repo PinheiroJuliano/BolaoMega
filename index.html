@@ -2,24 +2,41 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Bolão</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Gerador Mega Sena</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <img class="logo_megasena" src="https://logodownload.org/wp-content/uploads/2018/10/mega-sena-logo.png" alt="logo_megasena">
-        <h1>Gerador de Números Mega Sena</h1>
-        <div>
-            <label for="numJogos">Número de jogos a gerar:</label>
-            <input type="number" id="numJogos" min="1" value="1">
-            <button id="generateButton">Gerar Números</button>
-            <button id="cleanButton">Limpar</button>
-        </div>
-        <div id="result">
-            <!-- Os números gerados serão exibidos aqui -->
-        </div>
-        </div>
-    <script src="script.js"></script>
+
+<!-- LOGIN / CADASTRO -->
+<div id="authContainer" class="container">
+    <h2>Login / Cadastro</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+    <button onclick="register()">Cadastrar</button>
+</div>
+
+<!-- APLICATIVO -->
+<div id="appContainer" class="container" style="display:none;">
+    <img class="logo_megasena"
+        src="https://logodownload.org/wp-content/uploads/2018/10/mega-sena-logo.png">
+
+    <h1>Gerador de Números Mega Sena</h1>
+
+    <label>Número de jogos:</label>
+    <input type="number" id="numJogos" min="1" value="1">
+
+    <button id="generateButton">Gerar</button>
+    <button id="cleanButton">Limpar</button>
+    <button onclick="logout()">Sair</button>
+
+    <div id="result"></div>
+
+    <h3>Jogos Salvos</h3>
+    <div id="savedGames"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
