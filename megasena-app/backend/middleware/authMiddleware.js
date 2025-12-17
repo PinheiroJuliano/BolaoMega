@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const SECRET = 'mega_sena_secret';
+const SECRET = process.env.JWT_SECRET;
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;
