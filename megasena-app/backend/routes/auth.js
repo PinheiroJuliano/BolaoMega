@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 const db = require('../database');
 
 const router = express.Router();
-const SECRET = 'mega_sena_secret';
+const SECRET = process.env.JWT_SECRET;
+
 
 router.post('/register', (req, res) => {
     const { name, email, password, phone, address } = req.body;

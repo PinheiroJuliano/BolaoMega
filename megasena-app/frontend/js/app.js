@@ -1,6 +1,11 @@
 const token = localStorage.getItem('token');
 
 if (!token) {
+    window.location.href = 'login.html';
+    throw new Error('Usuário não autenticado');
+}
+
+if (!token) {
     location.href = 'login.html';
 }
 
