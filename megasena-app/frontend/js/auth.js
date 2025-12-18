@@ -14,9 +14,11 @@ async function register() {
 }
 
 async function login() {
-    const res = await fetch(API + '/auth/login', {
+    const res = await fetch(`${API}/auth/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             email: email.value,
             password: password.value
@@ -25,5 +27,5 @@ async function login() {
 
     const data = await res.json();
     localStorage.setItem('token', data.token);
-    location.href = 'app.html';
+    window.location.href = 'app.html';
 }
