@@ -14,11 +14,9 @@ async function register() {
 }
 
 async function login() {
-    const res = await fetch(`${API}auth/login`, {
+    const res = await fetch(`${API}/auth/login`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             email: email.value,
             password: password.value
@@ -26,7 +24,12 @@ async function login() {
     });
 
     const data = await res.json();
-    console.log(data);
+
+    if (!res.ok) {
+        alert(data.error || 'Erro ao fazer login');
+        return; // ⛔ NÃO navega
+    }
+
     localStorage.setItem('token', data.token);
     window.location.href = 'app.html';
 }
