@@ -1,3 +1,7 @@
+if (!localStorage.getItem('token')) {
+    location.href = 'login.html';
+}
+
 // SALVAR JOGOS
 async function salvarJogos(nome, jogos) {
     const res = await fetch(API + '/games', {
