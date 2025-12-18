@@ -13,7 +13,9 @@ async function register() {
     location.href = 'login.html';
 }
 
-async function login() {
+async function login(event) {
+    event.preventDefault();
+
     const res = await fetch(`${API}auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -26,8 +28,8 @@ async function login() {
     const data = await res.json();
 
     if (!res.ok) {
-        alert(data.error || 'Erro ao fazer login');
-        return; // ⛔ NÃO navega
+        alert(data.error || 'Login inválido');
+        return;
     }
 
     localStorage.setItem('token', data.token);
