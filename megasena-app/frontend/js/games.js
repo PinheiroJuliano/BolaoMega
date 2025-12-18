@@ -4,7 +4,7 @@ if (!localStorage.getItem('token')) {
 
 // SALVAR JOGOS
 async function salvarJogos(nome, jogos) {
-    const res = await fetch(API + '/games', {
+    const res = await fetch(API + 'games', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ async function salvarJogos(nome, jogos) {
 
 // LISTAR JOGOS
 async function listarJogos() {
-    const res = await fetch(API + '/games', {
+    const res = await fetch(API + 'games', {
         headers: authHeader()
     });
 
@@ -66,7 +66,7 @@ games.forEach(game => {
 
 // EXCLUIR JOGO
 async function excluirJogo(id) {
-    const res = await fetch(API + '/games/' + id, {
+    const res = await fetch(API + 'games/' + id, {
         method: 'DELETE',
         headers: authHeader()
     });
@@ -85,7 +85,7 @@ async function editarJogo(id, nomeAtual) {
 
     if (!novoNome || novoNome === nomeAtual) return;
 
-    const res = await fetch(API + '/games/' + id, {
+    const res = await fetch(API + 'games/' + id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
