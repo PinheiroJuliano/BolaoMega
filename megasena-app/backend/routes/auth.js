@@ -22,17 +22,37 @@ router.post('/register', (req, res) => {
     );
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    db.get(`SELECT * FROM users WHERE email=?`, [email], (err, user) => {
-        if (!user || !bcrypt.compareSync(password, user.password)) {
+    try {
+        const result = await db.query(
+            'SELECT * FROM users WHERE email = $1',
+            [email]
+        );
+
+        const user = result.rows[0];
+
+        if (!user) {
             return res.status(401).json({ error: 'Login inválido' });
         }
 
-        const token = jwt.sign({ id: user.id }, SECRET);
+        const validPassword = bcrypt.compareSync(password, user.password);
+        if (!validPassword) {
+            return res.status(401).json({ error: 'Login inválido' });
+        }
+
+        const token = jwt.sign(
+            { id: user.id },
+            process.env.JWT_SECRET,
+            { expiresIn: '1d' }
+        );
+
         res.json({ token });
-    });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Erro no login' });
+    }
 });
 
 module.exports = router;
