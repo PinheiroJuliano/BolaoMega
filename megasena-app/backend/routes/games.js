@@ -13,7 +13,7 @@ router.post('/', auth, async (req, res) => {
         await db.query(
             `INSERT INTO games (user_id, name, date, numbers)
              VALUES ($1, $2, $3, $4)`,
-            [req.user.id, name, date, numbers]
+            [req.user.id, name, date, JSON.stringify(numbers)]
         );
 
         res.json({ success: true });
