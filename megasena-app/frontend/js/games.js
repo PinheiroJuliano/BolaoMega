@@ -47,7 +47,7 @@ games.forEach(game => {
 
     div.innerHTML = `
         <strong>${game.name}</strong> (${game.date})<br>
-        ${JSON.parse(game.numbers)
+        ${game.numbers
             .map(j => j.join(', '))
             .join('<br>')}
         <br>
