@@ -19,6 +19,8 @@ router.post('/register', async (req, res) => {
             [name, email, hash, phone, address]
         );
 
+        console.log(`Usuário registrado: ${email}`);
+
         res.json({ success: true });
     } catch (err) {
         console.error(err);
