@@ -6,22 +6,33 @@ const db = require('../database');
 const router = express.Router();
 const SECRET = process.env.JWT_SECRET;
 
-
-router.post('/register', (req, res) => {
+/* REGISTER */
+router.post('/register', async (req, res) => {
     const { name, email, password, phone, address } = req.body;
-    const hash = bcrypt.hashSync(password, 8);
 
-    db.run(
-        `INSERT INTO users (name,email,password,phone,address)
-         VALUES (?,?,?,?,?)`,
-        [name, email, hash, phone, address],
-        err => {
-            if (err) return res.status(400).json({ error: 'Usuário já existe' });
-            res.json({ success: true });
+    try {
+        const hash = bcrypt.hashSync(password, 8);
+
+        await db.query(
+            `INSERT INTO users (name, email, password, phone, address)
+             VALUES ($1, $2, $3, $4, $5)`,
+            [name, email, hash, phone, address]
+        );
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+
+        // email duplicado
+        if (err.code === '23505') {
+            return res.status(400).json({ error: 'Usuário já existe' });
         }
-    );
+
+        res.status(500).json({ error: 'Erro ao registrar usuário' });
+    }
 });
 
+/* LOGIN */
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -33,18 +44,13 @@ router.post('/login', async (req, res) => {
 
         const user = result.rows[0];
 
-        if (!user) {
-            return res.status(401).json({ error: 'Login inválido' });
-        }
-
-        const validPassword = bcrypt.compareSync(password, user.password);
-        if (!validPassword) {
+        if (!user || !bcrypt.compareSync(password, user.password)) {
             return res.status(401).json({ error: 'Login inválido' });
         }
 
         const token = jwt.sign(
             { id: user.id },
-            process.env.JWT_SECRET,
+            SECRET,
             { expiresIn: '1d' }
         );
 
