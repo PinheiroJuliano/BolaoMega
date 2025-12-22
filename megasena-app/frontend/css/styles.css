@@ -19,6 +19,8 @@ body {
 
 /* CONTAINER PADRÃO */
 .container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 420px;
     background: #020617;
@@ -78,6 +80,8 @@ body {
 /* ===== APP ===== */
 
 .app-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 900px;
     background: #020617;
@@ -104,13 +108,14 @@ body {
 
 /* LISTA DE JOGOS */
 .games-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
 }
 
 /* CARD DO JOGO */
 .game-card {
+    width: 100%;
     background: #020617;
     border: 1px solid #1e293b;
     padding: 12px;
@@ -118,7 +123,7 @@ body {
 }
 
 /* RESPONSIVO – TABLET */
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .app-header {
         flex-direction: row;
         justify-content: space-between;
@@ -131,7 +136,7 @@ body {
 }
 
 /* RESPONSIVO – DESKTOP */
-@media (min-width: 1024px) {
+/*@media (min-width: 1024px) {
     .app-header {
         flex-direction: row;
         justify-content: space-between;
@@ -140,4 +145,4 @@ body {
     .games-list {
         grid-template-columns: repeat(2, 1fr);
     }
-}
+}*/
