@@ -1,18 +1,25 @@
 async function register() {
-    await fetch(API + 'auth/register', {
+    const res = await fetch(`${API}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            name: name.value,
-            email: email.value,
-            password: password.value,
-            phone: phone.value,
-            address: address.value
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            phone: document.getElementById('phone')?.value || null,
+            address: document.getElementById('address')?.value || null
         })
     });
-    location.href = 'login.html';
-}
 
+    const data = await res.json();
+
+    if (!res.ok) {
+        alert(data.error);
+        return;
+    }
+
+    window.location.href = 'login.html';
+}
 async function login(event) {
     event.preventDefault();
 
