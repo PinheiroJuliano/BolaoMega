@@ -46,6 +46,7 @@ games.forEach(game => {
     const div = document.createElement('div');
 
     div.innerHTML = `
+    <div class="game-card">
         <strong>${game.name}</strong> (${game.date})<br>
         ${game.numbers
             .map(j => j.join(', '))
@@ -57,6 +58,7 @@ games.forEach(game => {
         <button onclick="excluirJogo(${game.id})">
             Excluir
         </button>
+    </div>
     `;
 
     container.appendChild(div);
