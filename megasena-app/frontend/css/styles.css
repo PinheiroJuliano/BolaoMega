@@ -1,63 +1,138 @@
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* BODY */
 body {
     min-height: 100vh;
-    background: #f0f0f0;
+    background: #0f172a;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 16px;
 }
 
+/* CONTAINER PADRÃO */
 .container {
-    background: white;
     width: 100%;
     max-width: 420px;
+    background: #020617;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+/* TÍTULOS */
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+.container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+/* BOTÕES */
+.container button {
+    width: 100%;
+    padding: 12px;
+    background: #22c55e;
+    color: #020617;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.container button:hover {
+    background: #16a34a;
+}
+
+/* LINKS */
+.container a {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.container a:hover {
+    text-decoration: underline;
+}
+
+/* ===== APP ===== */
+
+.app-container {
+    width: 100%;
+    max-width: 900px;
+    background: #020617;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-h2, h3 {
+/* HEADER DO APP */
+.app-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.app-header h2 {
     text-align: center;
-    margin-bottom: 15px;
-    color: #333;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #049c4c;
+.app-header button {
+    background: #ef4444;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
 }
 
-button:hover {
-    background: #037a3b;
+/* LISTA DE JOGOS */
+.games-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
 }
 
-#result div,
-#savedGames div {
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
+/* CARD DO JOGO */
+.game-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+/* RESPONSIVO – TABLET */
+@media (min-width: 768px) {
+    .app-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .games-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* RESPONSIVO – DESKTOP */
+@media (min-width: 1024px) {
+    .games-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

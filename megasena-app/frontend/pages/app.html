@@ -4,25 +4,17 @@
     <meta charset="UTF-8">
     <title>Mega Sena App</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<div class="container">
-    <h2>Gerador Mega Sena</h2>
-
-    <div class="top-bar">
+<div class="app-container">
+    <div class="app-header">
+        <h2>Meus Jogos</h2>
         <button onclick="logout()">Sair</button>
     </div>
 
-    <label>Quantidade de jogos:</label>
-    <input type="number" id="numJogos" min="1" value="1">
-
-    <button onclick="gerarJogos()">Gerar Jogos</button>
-
-    <div id="result"></div>
-
-    <h3>Jogos Salvos</h3>
-    <div id="savedGames"></div>
+    <div class="games-list" id="games"></div>
 </div>
 
 <!-- ORDEM DOS SCRIPTS É CRÍTICA -->
