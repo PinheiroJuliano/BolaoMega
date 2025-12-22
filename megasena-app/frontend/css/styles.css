@@ -132,6 +132,11 @@ body {
 
 /* RESPONSIVO – DESKTOP */
 @media (min-width: 1024px) {
+    .app-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
     .games-list {
         grid-template-columns: repeat(2, 1fr);
     }
