@@ -1,4 +1,16 @@
-/* RESET BÁSICO */
+/* =====================================================
+   VARIÁVEIS DE COR (APENAS 4)
+===================================================== */
+:root {
+    --color-primary:   #22c55e;
+    --color-secondary: #38bdf8;
+    --color-danger:    #ef4444;
+    --color-muted:     #94a3b8;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,18 +18,22 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* BODY */
+/* =====================================================
+   BODY
+===================================================== */
 body {
     min-height: 100vh;
     background: #0f172a;
-    color: #fff;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 16px;
 }
 
-/* CONTAINER PADRÃO */
+/* =====================================================
+   CONTAINER PADRÃO
+===================================================== */
 .container {
     display: flex;
     flex-direction: column;
@@ -29,13 +45,17 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.4);
 }
 
-/* TÍTULOS */
+/* =====================================================
+   TÍTULOS
+===================================================== */
 .container h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* INPUTS */
+/* =====================================================
+   INPUTS
+===================================================== */
 .container input {
     width: 100%;
     padding: 12px;
@@ -46,30 +66,68 @@ body {
     font-size: 16px;
 }
 
-/* BOTÕES */
-.container button {
+/* =====================================================
+   BOTÕES
+===================================================== */
+.btn-primary {
     width: 100%;
     padding: 12px;
-    background: #22c55e;
-    color: #020617;
     font-size: 16px;
     font-weight: bold;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s;
+    background-color: var(--color-primary);
+    color: #020617;
+    transition: background-color 0.2s;
 }
 
-.container button:hover {
-    background: #16a34a;
+.btn-primary.secondary {
+    background-color: var(--color-secondary);
 }
 
-/* LINKS */
+.btn-primary.danger {
+    background-color: var(--color-danger);
+}
+
+.btn-primary:hover {
+    filter: brightness(0.9);
+}
+
+/* botão de ícone */
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-muted);
+    transition: color 0.2s;
+}
+
+.btn-primary danger {
+    background-color: var(--color-danger);
+}
+
+.btn-icon:hover {
+    color: #e5e7eb;
+}
+
+.btn-icon svg {
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+/* =====================================================
+   LINKS
+===================================================== */
 .container a {
     display: block;
     text-align: center;
     margin-top: 12px;
-    color: #38bdf8;
+    color: var(--color-secondary);
     text-decoration: none;
 }
 
@@ -77,8 +135,9 @@ body {
     text-decoration: underline;
 }
 
-/* ===== APP ===== */
-
+/* =====================================================
+   APP
+===================================================== */
 .app-container {
     display: flex;
     flex-direction: column;
@@ -89,7 +148,9 @@ body {
     border-radius: 10px;
 }
 
-/* HEADER DO APP */
+/* =====================================================
+   HEADER DO APP
+===================================================== */
 .app-header {
     display: flex;
     flex-direction: column;
@@ -101,48 +162,36 @@ body {
     text-align: center;
 }
 
-.app-header button {
-    background: #ef4444;
-    color: white;
-}
-
-/* LISTA DE JOGOS */
+/* =====================================================
+   LISTA DE JOGOS
+===================================================== */
 .games-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-/* CARD DO JOGO */
+/* =====================================================
+   CARD DO JOGO
+===================================================== */
 .game-card {
     width: 100%;
     background: #020617;
     border: 1px solid #1e293b;
     padding: 12px;
     border-radius: 8px;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
 }
 
-/* RESPONSIVO – TABLET */
-/*@media (min-width: 768px) {
-    .app-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .games-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.game-info {
+    text-align: left;
 }
 
-/* RESPONSIVO – DESKTOP */
-/*@media (min-width: 1024px) {
-    .app-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .games-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}*/
+.game-actions {
+    display: flex;
+    gap: 8px;
+}

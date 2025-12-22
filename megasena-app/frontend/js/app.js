@@ -40,11 +40,17 @@ function gerarJogos() {
 
     if (jogosGerados.length) {
         const btn = document.createElement('button');
-        btn.textContent = 'Salvar Jogos';
+
+        btn.textContent = 'Salvar';
+
+        // classes do botão
+        btn.classList.add('btn-primary');
+
         btn.onclick = () => {
             const nome = prompt('Nome do jogo:');
             if (nome) salvarJogos(nome, jogosGerados);
         };
+
         result.appendChild(btn);
     }
 
