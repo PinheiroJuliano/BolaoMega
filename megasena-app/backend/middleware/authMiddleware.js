@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const SECRET = process.env.JWT_SECRET;
+const SECRET = process.env.JWT_SECRET || 'bolao-mega-secret';
 
 module.exports = (req, res, next) => {
     const authHeader = req.headers.authorization;

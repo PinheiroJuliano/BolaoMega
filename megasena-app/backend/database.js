@@ -1,12 +1,46 @@
-const { Pool } = require('pg');
+const fs = require('fs');
+const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
+const dbPath = path.join(__dirname, 'bolao.db');
+const db = new sqlite3.Database(dbPath);
+
+function initializeDatabase() {
+    return new Promise((resolve, reject) => {
+        const sql = fs.readFileSync(path.join(__dirname, 'init.sql'), 'utf8');
+        db.exec(sql, (err) => (err ? reject(err) : resolve()));
+    });
+}
+
+function query(text, params = []) {
+    const normalizedText = text.trim().toUpperCase();
+
+    if (normalizedText.startsWith('SELECT')) {
+        return new Promise((resolve, reject) => {
+            db.all(text, params, (err, rows) => {
+                if (err) {
+                    reject(err);
+                    return;
+                }
+
+                resolve({ rows, rowCount: rows.length });
+            });
+        });
     }
-});
+
+    return new Promise((resolve, reject) => {
+        db.run(text, params, function (err) {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({ rowCount: this.changes });
+        });
+    });
+}
 
 module.exports = {
-    query: (text, params) => pool.query(text, params)
+    initializeDatabase,
+    query
 };

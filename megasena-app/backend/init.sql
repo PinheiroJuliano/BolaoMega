@@ -1,5 +1,5 @@
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     email TEXT UNIQUE,
     password TEXT,
@@ -7,10 +7,10 @@ CREATE TABLE users (
     address TEXT
 );
 
-CREATE TABLE games (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS games (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES users(id),
     name TEXT,
     date TEXT,
-    numbers JSONB
+    numbers TEXT
 );

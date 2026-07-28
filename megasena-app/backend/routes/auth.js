@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../database');
 
 const router = express.Router();
-const SECRET = process.env.JWT_SECRET;
+const SECRET = process.env.JWT_SECRET || 'bolao-mega-secret';
 
 /* REGISTER */
 router.post('/register', async (req, res) => {
@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
 
         await db.query(
             `INSERT INTO users (name, email, password, phone, address)
-             VALUES ($1, $2, $3, $4, $5)`,
+             VALUES (?, ?, ?, ?, ?)`,
             [name, email, hash, phone, address]
         );
 
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
 
     try {
         const result = await db.query(
-            'SELECT * FROM users WHERE email = $1',
+            'SELECT * FROM users WHERE email = ?',
             [email]
         );
 

@@ -12,7 +12,7 @@ router.post('/', auth, async (req, res) => {
     try {
         await db.query(
             `INSERT INTO games (user_id, name, date, numbers)
-             VALUES ($1, $2, $3, $4)`,
+             VALUES (?, ?, ?, ?)`,
             [req.user.id, name, date, JSON.stringify(numbers)]
         );
 
@@ -27,11 +27,16 @@ router.post('/', auth, async (req, res) => {
 router.get('/', auth, async (req, res) => {
     try {
         const result = await db.query(
-            `SELECT * FROM games WHERE user_id = $1 ORDER BY id DESC`,
+            `SELECT * FROM games WHERE user_id = ? ORDER BY id DESC`,
             [req.user.id]
         );
 
-        res.json(result.rows);
+        const games = (result.rows || []).map((game) => ({
+            ...game,
+            numbers: typeof game.numbers === 'string' ? JSON.parse(game.numbers) : game.numbers
+        }));
+
+        res.json(games);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Erro ao buscar jogos' });
@@ -49,8 +54,8 @@ router.put('/:id', auth, async (req, res) => {
 
     const result = await db.query(
         `UPDATE games
-         SET name = $1
-         WHERE id = $2 AND user_id = $3`,
+         SET name = ?
+         WHERE id = ? AND user_id = ?`,
         [name, id, req.user.id]
     );
 
@@ -64,7 +69,7 @@ router.put('/:id', auth, async (req, res) => {
 // DELETE
 router.delete('/:id', auth, async (req, res) => {
     const result = await db.query(
-        `DELETE FROM games WHERE id = $1 AND user_id = $2`,
+        `DELETE FROM games WHERE id = ? AND user_id = ?`,
         [req.params.id, req.user.id]
     );
 

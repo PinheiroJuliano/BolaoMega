@@ -1,4 +1,4 @@
-const API = 'https://bolaomega-production.up.railway.app/';
+const API = `${window.location.origin}/`;
 
 function authHeader() {
     const token = localStorage.getItem('token');
