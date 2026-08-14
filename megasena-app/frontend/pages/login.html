@@ -2,26 +2,50 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login | Mega Bolão</title>
     <link rel="stylesheet" href="../css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <main class="auth-shell">
+        <section class="auth-card">
+            <aside class="brand-panel">
+                <div class="brand-mark">MEGA</div>
+                <div>
+                    <h1>Bolão Mega Sena</h1>
+                    <p>Organize seus palpites, gere apostas em segundos e acompanhe seus jogos favoritos em um só lugar.</p>
+                </div>
+                <ul class="feature-list">
+                    <li>Geração rápida de combinações</li>
+                    <li>Salve e edite seus jogos</li>
+                    <li>Interface simples e moderna</li>
+                </ul>
+            </aside>
 
-<div class="container">
-    <h2>Login</h2>
+            <section class="form-panel">
+                <h2>Entrar</h2>
+                <p class="form-subtitle">Acesse sua conta para continuar</p>
 
-    <form onsubmit="login(event)">
-        <input id="email" placeholder="Email" required>
-        <input id="password" type="password" placeholder="Senha" required>
+                <form class="auth-form" onsubmit="login(event)">
+                    <label class="field">
+                        <span>Email</span>
+                        <input id="email" type="email" placeholder="seuemail@exemplo.com" required>
+                    </label>
 
-        <button type="submit">Entrar</button>
-    </form>
+                    <label class="field">
+                        <span>Senha</span>
+                        <input id="password" type="password" placeholder="********" required>
+                    </label>
 
-    <a href="register.html">Criar conta</a>
-</div>
+                    <button class="btn-primary" type="submit">Entrar</button>
+                </form>
 
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
+                <p class="auth-link">Ainda não tem conta? <a href="register.html">Crie uma agora</a></p>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>

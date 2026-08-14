@@ -2,24 +2,65 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro</title>
+    <title>Cadastro | Mega Bolão</title>
     <link rel="stylesheet" href="../css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <main class="auth-shell">
+        <section class="auth-card">
+            <aside class="brand-panel">
+                <div class="brand-mark">MEGA</div>
+                <div>
+                    <h1>Crie sua conta</h1>
+                    <p>Cadastre-se para começar a salvar jogos, organizar apostas e gerenciar sua rotina de bolão com facilidade.</p>
+                </div>
+                <ul class="feature-list">
+                    <li>Controle rápido dos seus jogos</li>
+                    <li>Personalize seu perfil</li>
+                    <li>Experiência mais clara e organizada</li>
+                </ul>
+            </aside>
 
-<div class="container">
-    <h2>Cadastro</h2>
-    <input id="name" placeholder="Nome">
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Senha">
-    <input id="phone" placeholder="Celular">
-    <input id="address" placeholder="Endereço">
-    <button onclick="register()">Cadastrar</button>
-    <a href="login.html">Já tenho conta</a>
-</div>
+            <section class="form-panel">
+                <h2>Cadastro</h2>
+                <p class="form-subtitle">Preencha os dados para entrar no bolão</p>
 
-<script src="../js/api.js"></script>
-<script src="../js/auth.js"></script>
+                <form class="auth-form" onsubmit="event.preventDefault(); register();">
+                    <label class="field">
+                        <span>Nome completo</span>
+                        <input id="name" type="text" placeholder="Seu nome" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Email</span>
+                        <input id="email" type="email" placeholder="seuemail@exemplo.com" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Senha</span>
+                        <input id="password" type="password" placeholder="Crie uma senha" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Celular</span>
+                        <input id="phone" type="tel" placeholder="(00) 00000-0000">
+                    </label>
+
+                    <label class="field">
+                        <span>Endereço</span>
+                        <input id="address" type="text" placeholder="Seu endereço">
+                    </label>
+
+                    <button class="btn-primary" type="submit">Cadastrar</button>
+                </form>
+
+                <p class="auth-link">Já tem uma conta? <a href="login.html">Entrar</a></p>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
